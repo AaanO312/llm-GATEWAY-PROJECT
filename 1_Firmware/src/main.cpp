@@ -7,8 +7,8 @@
 
 
 // --- 用户配置区 ---
-const char* ssid = "JL312";
-const char* password = "111111111";
+const char* ssid = "your_wifi";
+const char* password = "your_wifi";
 const char* mqtt_server = "broker.emqx.io"; // 推荐用公网，最稳
 const int mqtt_port = 1883;
 
@@ -157,7 +157,7 @@ void loop() {
 
 
   // ============================================
-  // 1. [新增] 独立定时上报温度 (每1秒发一次)
+  // 1. 独立定时上报温度 (每1秒发一次)
   // ============================================
   static unsigned long lastTempReport = 0;
   if (millis() - lastTempReport > 1000) { // 1000ms = 1秒
@@ -179,7 +179,6 @@ void loop() {
   // ============================================
   // 2. 本地温控逻辑 (继电器控制)
   // ============================================
-  // (保持之前的逻辑，只是为了响应更快，单独再读一次也可以，或者直接用上面的currentTemp)
   if (currentTemp > 80.0) {
       digitalWrite(RELAY_PIN, LOW); // 风扇转
   } else if (currentTemp < 60.0) {
