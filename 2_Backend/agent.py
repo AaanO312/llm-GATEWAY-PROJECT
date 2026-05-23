@@ -2,7 +2,7 @@ from openai import OpenAI
 
 # 智谱 AI 的配置
 client = OpenAI(
-    api_key="3d25cab3c03947ba8f78dfc2484c6608.QpChwgC6qdTc700k", 
+    api_key="<你的api_key>", 
     base_url="https://open.bigmodel.cn/api/paas/v4/" # 智谱的官方 V4 接口地址
 )
 
@@ -20,5 +20,5 @@ def ask_agent(prompt, temp, status):
         )
         return response.choices[0].message.content
     except Exception as e:
-        print(f"❌ 智谱 AI 调用失败: {e}")
+        print(f"智谱 AI 调用失败: {e}")
         return f"诊断服务暂时不可用，请人工检查设备。错误原因: {str(e)}"
